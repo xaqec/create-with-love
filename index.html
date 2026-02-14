@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+    <title>Will You Be My Valentine?</title>
+    <meta name="description"
+        content="Create a free Valentine card with drawings. Ask 'Will you be my Valentine?' in a fun way!">
+    <meta name="theme-color" content="#FF2D55">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage" class="page active">
+        <div class="header-buttons">
+            <button class="header-btn" id="heartBtn">💗</button>
+            <div class="header-right">
+                <button class="header-btn pink" id="loveMeBtn">Love Me</button>
+                <button class="header-btn pink" id="galleryBtn">Gallery</button>
+            </div>
+        </div>
+
+        <div class="floating-decorations"></div>
+
+        <div class="main-content">
+            <h1 class="main-title">WILL YOU BE MY<br>VALENTINE?</h1>
+            <p class="subtitle">( It takes 2 minutes. They'll remember it forever )</p>
+            <p class="users-count">Already Loved by 21k+ users</p>
+
+            <div class="input-card">
+                <label class="input-label">WHO IS THIS FOR?</label>
+                <input type="text" id="recipientInput" class="name-input" placeholder="Their Name" maxlength="50">
+                <button id="createBtn" class="create-btn">Create Valentine</button>
+                <p class="perfect-text">😍 Perfect to make them feel special</p>
+            </div>
+        </div>
+
+        <div class="bottom-info">How it works</div>
+    </div>
+
+    <!-- Drawing Canvas Page -->
+    <div id="drawingPage" class="page">
+        <div class="canvas-header">
+            <span id="moveCounter" class="move-counter">0/5 MOVES</span>
+            <div class="canvas-controls">
+                <button class="icon-btn" id="templateBtn" title="Templates">✏️</button>
+                <button class="icon-btn close-btn" id="closeDrawing">✕</button>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="drawingCanvas"></canvas>
+        </div>
+
+        <div class="canvas-footer">
+            <h3 class="canvas-title">Draw something just for them,</h3>
+            <p class="canvas-desc">We've started with a heart, now you draw something in 5 moves<br>which will turn into
+                a beautiful card for your Valentine make your loved one feel special.</p>
+            <div class="canvas-buttons">
+                <button id="resetBtn" class="secondary-btn">Reset Canvas</button>
+                <button id="previewBtn" class="primary-btn">Preview Card</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content preview-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">CARD PREVIEW</h2>
+                <div class="modal-controls">
+                    <button class="icon-btn" id="regenerateQuote">🔄</button>
+                    <button class="icon-btn close-btn" id="closePreview">✕</button>
+                </div>
+            </div>
+            <div class="card-preview">
+                <div class="card-ribbon">🎀</div>
+                <div class="card-quote" id="cardQuote"></div>
+                <div class="card-drawing-container">
+                    <canvas id="previewCanvas"></canvas>
+                </div>
+                <div class="card-decorations">
+                    <span class="card-heart">❤️</span>
+                    <span class="card-avocado">🥑</span>
+                </div>
+                <div class="card-recipient">
+                    for <span id="recipientName" class="recipient-name"></span>,
+                </div>
+                <div class="card-sender">
+                    from <input type="text" id="senderInput" class="sender-input" placeholder="Your Name"
+                        maxlength="30">
+                </div>
+            </div>
+            <button id="continueBtn" class="primary-btn full-width">Continue to Questions</button>
+        </div>
+    </div>
+
+
+
+    <!-- Question Page -->
+    <div id="questionPage" class="page">
+        <div class="header-buttons">
+            <button class="header-btn" id="heartBtn2">💗</button>
+            <div class="header-right">
+                <button class="header-btn pink" id="tryItBtn">Try it</button>
+                <button class="header-btn pink" id="galleryBtn2">Gallery</button>
+            </div>
+        </div>
+
+        <div class="floating-decorations"></div>
+
+        <div class="main-content">
+            <div class="question-card">
+                <div class="question-progress">
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="question-header" id="questionHeader">QUESTION 1 OF 4</div>
+                <h2 class="question-text" id="questionText"></h2>
+                <div class="question-buttons">
+                    <button class="answer-btn yes-btn" id="yesBtn">Yes</button>
+                    <button class="answer-btn little-btn" id="littleBtn">A little</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Card Reveal -->
+    <div id="finalCardPage" class="page">
+        <div class="header-buttons">
+            <button class="header-btn" id="heartBtn3">💗</button>
+            <div class="header-right">
+                <button class="header-btn pink" id="tryItBtn2">Try it</button>
+                <button class="header-btn pink" id="galleryBtn3">Gallery</button>
+            </div>
+        </div>
+
+        <div class="floating-decorations"></div>
+
+        <div class="main-content">
+            <div class="final-card">
+                <div class="card-ribbon">🎀</div>
+                <div class="card-quote" id="finalQuote"></div>
+                <div class="card-drawing-container">
+                    <canvas id="finalCanvas"></canvas>
+                </div>
+                <div class="card-decorations">
+                    <span class="card-heart">❤️</span>
+                    <span class="card-avocado">🥑</span>
+                </div>
+                <div class="card-recipient">
+                    for <span id="finalRecipient" class="recipient-name"></span>,
+                </div>
+                <div class="card-sender">
+                    from <span id="finalSender" class="sender-name"></span>
+                </div>
+            </div>
+            <button id="createOwnBtn" class="primary-btn create-own-btn">Create Your Own 💕</button>
+        </div>
+    </div>
+
+    <!-- Buy Me a Coffee -->
+    <a href="https://buymeacoffee.com/yourusername" target="_blank" rel="noopener noreferrer" class="coffee-btn"
+        aria-label="Buy me a coffee">
+        ☕
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
