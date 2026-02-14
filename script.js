@@ -106,7 +106,28 @@ function setupEventListeners() {
 
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
-        continueBtn.addEventListener('click', continueToQuestions);
+        continueBtn.addEventListener('click', continueToEntrance);
+    }
+
+    // How it Works modal
+    const howItWorksBtn = document.getElementById('howItWorksBtn');
+    if (howItWorksBtn) {
+        howItWorksBtn.addEventListener('click', () => {
+            document.getElementById('howItWorksModal').classList.add('active');
+        });
+    }
+
+    const closeHowItWorks = document.getElementById('closeHowItWorks');
+    if (closeHowItWorks) {
+        closeHowItWorks.addEventListener('click', () => {
+            document.getElementById('howItWorksModal').classList.remove('active');
+        });
+    }
+
+    // Entrance screen
+    const continueToQuestionsBtn = document.getElementById('continueToQuestionsBtn');
+    if (continueToQuestionsBtn) {
+        continueToQuestionsBtn.addEventListener('click', startQuestions);
     }
 
     // Question buttons
@@ -115,8 +136,8 @@ function setupEventListeners() {
     if (yesBtn) yesBtn.addEventListener('click', () => nextQuestion());
     if (littleBtn) littleBtn.addEventListener('click', () => nextQuestion());
 
-    // Navigation buttons
-    document.querySelectorAll('[id^="tryItBtn"], [id^="loveMeBtn"]').forEach(btn => {
+    // Navigation buttons - removed Love Me and Gallery
+    document.querySelectorAll('[id^="tryItBtn"]').forEach(btn => {
         btn.addEventListener('click', () => {
             showPage('landingPage');
             resetApp();
@@ -284,7 +305,7 @@ function showPreview() {
     img.src = drawingData;
 }
 
-function continueToQuestions() {
+function continueToEntrance() {
     senderName = document.getElementById('senderInput').value.trim();
 
     if (!senderName) {
@@ -292,9 +313,10 @@ function continueToQuestions() {
         return;
     }
 
-    // Close preview modal and start questions
+    // Close preview modal and show entrance screen
     document.getElementById('previewModal').classList.remove('active');
-    startQuestions();
+    document.getElementById('entranceRecipient').textContent = recipientName;
+    showPage('entranceScreen');
 }
 
 function startQuestions() {
@@ -359,62 +381,40 @@ function resetApp() {
 }
 
 function createFloatingElements() {
-    // Add more floating hearts and decorative elements
+    // Add MORE floating hearts and decorative elements
     const pages = document.querySelectorAll('.page');
+    const emojis = ['❤️', '💕', '💖', '💗', '💝', '💘', '💓', '💞'];
+
     pages.forEach(page => {
         const decorations = page.querySelector('.floating-decorations');
         if (!decorations) return;
 
-        // Add hearts
-        for (let i = 0; i < 5; i++) {
+        // Add MORE hearts with faster animations
+        for (let i = 0; i < 12; i++) {
             const heart = document.createElement('div');
-            heart.textContent = '❤️';
+            heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             heart.style.position = 'absolute';
-            heart.style.fontSize = '20px';
+            heart.style.fontSize = (15 + Math.random() * 15) + 'px';
             heart.style.left = Math.random() * 100 + '%';
             heart.style.top = Math.random() * 100 + '%';
-            heart.style.animation = `float ${5 + Math.random() * 5}s infinite ease-in-out`;
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            heart.style.opacity = '0.6';
+            heart.style.animation = `float ${2 + Math.random() * 3}s infinite ease-in-out`;
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heart.style.opacity = '0.7';
             decorations.appendChild(heart);
         }
 
-        // Add ducks
-        const ducks = ['🦆', '🦢', '🐦'];
-        for (let i = 0; i < 3; i++) {
+        // Add ducks with faster waddle
+        const ducks = ['🦆', '🦢', '🐦', '🕊️'];
+        for (let i = 0; i < 4; i++) {
             const duck = document.createElement('div');
             duck.textContent = ducks[i % ducks.length];
             duck.style.position = 'absolute';
             duck.style.fontSize = '50px';
             duck.style.left = Math.random() * 90 + '%';
             duck.style.top = (20 + Math.random() * 60) + '%';
-            duck.style.animation = `waddle ${8 + Math.random() * 4}s infinite ease-in-out`;
-            duck.style.animationDelay = Math.random() * 3 + 's';
+            duck.style.animation = `waddle ${5 + Math.random() * 3}s infinite ease-in-out`;
+            duck.style.animationDelay = Math.random() * 2 + 's';
             decorations.appendChild(duck);
         }
 
-        // Add love letters
-        for (let i = 0; i < 2; i++) {
-            const letter = document.createElement('div');
-            letter.textContent = '💌';
-            letter.style.position = 'absolute';
-            letter.style.fontSize = '30px';
-            letter.style.left = Math.random() * 100 + '%';
-            letter.style.top = Math.random() * 100 + '%';
-            letter.style.animation = `float ${6 + Math.random() * 4}s infinite ease-in-out`;
-            letter.style.animationDelay = Math.random() * 4 + 's';
-            letter.style.opacity = '0.7';
-            decorations.appendChild(letter);
-        }
-    });
-}
-
-// Add waddle animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes waddle {
-        0%, 100% { transform: translateX(0) rotate(-5deg); }
-        50% { transform: translateX(20px) rotate(5deg); }
-    }
-`;
-document.head.appendChild(style);
+        // Add MORE love letters and other emojis
