@@ -16,10 +16,6 @@
     <div id="landingPage" class="page active">
         <div class="header-buttons">
             <button class="header-btn" id="heartBtn">💗</button>
-            <div class="header-right">
-                <button class="header-btn pink" id="loveMeBtn">Love Me</button>
-                <button class="header-btn pink" id="galleryBtn">Gallery</button>
-            </div>
         </div>
 
         <div class="floating-decorations"></div>
@@ -37,7 +33,7 @@
             </div>
         </div>
 
-        <div class="bottom-info">How it works</div>
+        <button class="bottom-info-btn" id="howItWorksBtn">How it works</button>
     </div>
 
     <!-- Drawing Canvas Page -->
@@ -97,16 +93,55 @@
         </div>
     </div>
 
+    <!-- How it Works Modal -->
+    <div id="howItWorksModal" class="modal">
+        <div class="modal-content info-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">HOW IT WORKS 💕</h2>
+                <button class="icon-btn close-btn" id="closeHowItWorks">✕</button>
+            </div>
+            <div class="info-content">
+                <h3>🎯 Purpose</h3>
+                <p>Create a personalized Valentine's card with your own drawing to make someone feel special!</p>
 
+                <h3>📝 Steps</h3>
+                <ol>
+                    <li><strong>Enter their name</strong> - Who is this card for?</li>
+                    <li><strong>Draw on the canvas</strong> - Add your personal touch (5 moves)</li>
+                    <li><strong>Preview your card</strong> - See how it looks</li>
+                    <li><strong>Enter your name</strong> - Sign your card</li>
+                    <li><strong>Answer questions</strong> - Interactive experience</li>
+                    <li><strong>Reveal the card</strong> - Beautiful final result!</li>
+                </ol>
+
+                <p class="info-note">✨ Everything happens in your browser - no sharing needed!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entrance Screen -->
+    <div id="entranceScreen" class="page">
+        <div class="header-buttons">
+            <button class="header-btn" id="heartBtnEntrance">💗</button>
+        </div>
+
+        <div class="floating-decorations"></div>
+
+        <div class="main-content entrance-content">
+            <div class="surprise-card">
+                <div class="surprise-emoji">🎁</div>
+                <h1 class="surprise-title">Hey <span id="entranceRecipient" class="entrance-name"></span>!</h1>
+                <p class="surprise-text">I have a little surprise for you...</p>
+                <div class="surprise-hearts">💕 💖 💗</div>
+                <button id="continueToQuestionsBtn" class="primary-btn surprise-btn">See Your Surprise 🙈</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Question Page -->
     <div id="questionPage" class="page">
         <div class="header-buttons">
             <button class="header-btn" id="heartBtn2">💗</button>
-            <div class="header-right">
-                <button class="header-btn pink" id="tryItBtn">Try it</button>
-                <button class="header-btn pink" id="galleryBtn2">Gallery</button>
-            </div>
         </div>
 
         <div class="floating-decorations"></div>
@@ -132,10 +167,6 @@
     <div id="finalCardPage" class="page">
         <div class="header-buttons">
             <button class="header-btn" id="heartBtn3">💗</button>
-            <div class="header-right">
-                <button class="header-btn pink" id="tryItBtn2">Try it</button>
-                <button class="header-btn pink" id="galleryBtn3">Gallery</button>
-            </div>
         </div>
 
         <div class="floating-decorations"></div>
@@ -162,11 +193,8 @@
         </div>
     </div>
 
-    <!-- Buy Me a Coffee -->
-    <a href="https://buymeacoffee.com/yourusername" target="_blank" rel="noopener noreferrer" class="coffee-btn"
-        aria-label="Buy me a coffee">
-        ☕
-    </a>
+
+
 
     <script src="script.js"></script>
 </body>
